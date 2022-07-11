@@ -1,0 +1,74 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-4" id="colone">
+
+        </div>
+        <div class="col-sm-4" id="coltwo">
+
+        </div>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm" id="colzero">
+            <h2 style="text-align:center;font-weight:bold;">Adding new transport info</h2>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:30px;">
+        <div class="col-sm" id="colfirst">
+            <form>
+                <div>
+                    <label class="form-label" id="labelone">Car brand<span style="color:red;">&nbsp;*</span></label>
+                </div>
+                <div>
+                    <input type="text" [name]="name" class="form-control" id="inputone" />
+                </div>
+                <div>
+                    <label class="form-label" id="labelhiddenone">necessary to fill</label>
+                </div>
+                <div>
+                    <label class="form-label" id="labeltwo">Car plate<span style="color:red;">&nbsp;*</span></label>
+                </div>
+                <div>
+                    <input type="text" [(ngModel)]="number" class="form-control" id="inputtwo" />
+                </div>
+                <div>
+                    <label class="form-label" id="labelhiddentwo">necessary to fill</label>
+                </div>
+                <div>
+                    <label class="form-label" id="labelthree">Imported cargo<span style="color:red;">&nbsp;*</span></label>
+                </div>
+                <div>
+                    <input [(ngModel)]="transportDto.cargo" class="form-control" id="inputthree" />
+                </div>
+                <div>
+                    <label class="form-label" id="labelhiddenthree">necessary to fill</label>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm" id="colsecond">
+            <div>
+                <label class="form-label" id="labelfour">Number of axis<span style="color:red;">&nbsp;*</span></label>
+            </div>
+            <div>
+                <input type="text" [(ngModel)]="axisNumber" class="form-control" id="inputfour" />
+            </div>
+            <div>
+                <label class="form-label" id="labelhiddenfour">necessary to fill</label>
+            </div>
+            <div>
+                <label class="form-label" id="labelfive">Weight<span style="color:red;">&nbsp;*</span></label>
+            </div>
+            <div>
+                <input type="text" [(ngModel)]="weight"  class="form-control" id="inputfive" />
+            </div>
+            <div>
+                <label class="form-label" id="labelhiddenfive">necessary to fill</label>
+            </div>
+            <div>
+                <button class="butonsave" (click)="saveNewTransportInfo()">Save new</button>
+            </div>
+        </div>
+    </div>
+   
+</div>

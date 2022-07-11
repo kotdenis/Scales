@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row mt-3" style="height:500px;min-height:500px;">
+        <div class="col-sm-12" style="height:500px;min-height:500px;">
+            <table class="table table-dark table-striped" id="journaltable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Car brand</th>
+                        <th>Car plate</th>
+                        <th>Imported cargo</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Weight</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyid">
+                    <tr *ngFor="let item of journalReady | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index">
+                        <td>{{item.numeration}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.number}}</td>
+                        <td>{{item.cargo}}</td>
+                        <td>{{item.date}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.weight}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <pagination-controls style="width:250px;"
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" id="colid">
+            <form style="float:right;">
+                <div>
+                    <h2>Search</h2>
+                </div>
+                <div class="divcontainer">
+                    <div>
+                        <label class="form-label" id="labeldate">Search by date</label>
+                    </div>
+                    <div>
+                        <input type="date" [(ngModel)]="weighinDate" class="form-control" id="inputdate" />
+                    </div>
+                    <div>
+                        <label class="form-label" id="labeltext">Search by car plate</label>
+                    </div>
+                    <div class="divtwo">
+                        <input type="text" [(ngModel)]="plate" class="form-control" id="inputtext"/>
+                    </div>
+                </div>
+               <div>
+                    <button id="butonsubmit" (click)="searchInJournal()">Search</button>
+               </div>
+            </form>
+        </div>
+    </div>
+</div>

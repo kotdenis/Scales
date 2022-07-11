@@ -1,0 +1,120 @@
+<div id="div-container">
+    <div>
+        <div>
+            <div style="display: block" id="divone">
+                <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+                    [type]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+            <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+        </div>
+    </div>
+    <div id="divtwo">
+        <div class="mb-3">
+            <div class="labelclassone">
+                <label for="formGroupExampleInput" class="form-label" id="labelone">Weighing</label>
+            </div>
+            <div class="divinputone">
+                <input type="text" [(ngModel)]="weightToShow" class="form-control" id="formGroupExampleInput" readonly>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="labelclasstwo">
+                <label for="formGroupExampleInput2" class="form-label" id="labeltwo">Car brand</label>
+            </div>
+            <div class="divinputtwo">
+                <input type="text" [(ngModel)]="name"  class="form-control" id="formGroupExampleInput2" readonly>
+            </div>
+            <div class="mb-3">
+                <div class="labelclassthree">
+                    <label for="formGroupExampleInput3" class="form-label" id="labelthree">Car plate</label>
+                </div>
+                <div class="divinputthree">
+                    <input type="text" [(ngModel)]="number"  class="form-control" id="formGroupExampleInput3" readonly>
+                </div>
+                <div class="mb-3">
+                    <div class="labelclassfour">
+                        <label for="formGroupExampleInput4" class="form-label" id="labelfour">Imported cargo</label>
+                    </div>
+                    <div class="divinputfour">
+                        <input type="text" [(ngModel)]="cargo"  class="form-control" id="formGroupExampleInput4" readonly>
+                    </div>
+          </div>
+          
+        </div>
+        <div class="divbutton">
+            <button class="buton1" (click)="getTransport2()">Accept the car</button>
+        </div>
+        <div class="divbutton">
+            <button class="buton2" (click)="generateWeight()">Begin weighing</button>
+        </div>
+        <div class="divbutton">
+            <button class="buton2" (click)="saveTransport()" id="butonsave">Save weighing</button>
+        </div>
+    </div>
+</div>
+<div id="divpanelthree">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm" style="height: 50px;">
+                <h2 style="text-align: center;color: darkgrey;">Weghing for day</h2>
+            </div>
+        </div>
+        <div class="row" style="height: 400px;max-height: 400px;">
+            <div class="col-sm" style="height: 400px;max-height: 400px;">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Car plate</th>
+                            <th>Time</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of transportForDay | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
+                            <td>{{item.number}}</td>
+                            <td>{{item.time}}</td>
+                            <td>{{item.weight}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <pagination-controls style="width:250px;"
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm" style="height: 100px;">
+                <button class="tablebuton" (click)="showForDay()">Show For Day</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" id="modalsave">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="font-family:Arial, Helvetica, sans-serif;font-weight: bold;">Info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" (click)="closeModal()" 
+          style="background-color: red;"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-family:Arial, Helvetica, sans-serif;font-weight: bold;">All was saved!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
