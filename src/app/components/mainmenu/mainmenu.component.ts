@@ -74,11 +74,11 @@ export class MainmenuComponent implements OnInit {
     let journalDtos: JournalDto = {weighinDate: new Date(), weight: this.weight, time: '00:00', number: this.number, 
     name: this.name, cargo: this.cargo, date: '' }
     this.transportService.saveweghing(journalDtos).subscribe(data => this.journalDto = data)
-    $('#formGroupExampleInput').val('');
-    $('#formGroupExampleInput2').val('');
-    $('#formGroupExampleInput3').val('');
-    $('#formGroupExampleInput4').val('');
-    $('#formGroupExampleInput').css('background-color', '#008080'); 
+    $('#inputWeighing').val('');
+    $('#inputCarBrand').val('');
+    $('#inputCarPlate').val('');
+    $('#inputCargo').val('');
+    $('#inputWeighing').css('background-color', '#008080'); 
     $(".buton1").removeAttr("disabled");
     $('#modalsave').show();
   }
@@ -90,7 +90,7 @@ export class MainmenuComponent implements OnInit {
   }
 
   generateWeight() : void{
-    if($('#formGroupExampleInput2').val()){
+    if($('#inputCarBrand').val()){
       $(".buton1").attr("disabled", "true")
       $("#butonsave").attr("disabled", "true")
     }
@@ -103,7 +103,7 @@ export class MainmenuComponent implements OnInit {
         if(this.weightToShow === this.weight){
           temp = 0;
           this.weightToShow = this.weight; 
-          $('#formGroupExampleInput').css('background-color', '#008000');
+          $('#inputWeighing').css('background-color', '#008000');
           clearInterval(timerId);
           $("#butonsave").removeAttr("disabled");
         }
